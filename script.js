@@ -2,7 +2,7 @@ let newX = 0, newY = 0, startX = 0, startY = 0;
 const card = document.getElementById('card');
 const target = document.getElementById('Slot'); // The target area
 
-const snapThreshold = 75; // Distance in pixels to trigger snapping
+const snapThreshold = 100; // Distance in pixels to trigger snapping
 
 card.addEventListener('mousedown', mouseDown);
 
