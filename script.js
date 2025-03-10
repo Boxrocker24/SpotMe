@@ -1,6 +1,6 @@
 let newX = 0, newY = 0, startX = 0, startY = 0;
 const card = document.getElementById('card');
-const target = document.getElementById('Slot'); // The target area
+const slots = document.querySelectorAll('.slot'); // Get all slots
 
 const snapThreshold = 100; // Distance in pixels to trigger snapping
 
@@ -38,15 +38,26 @@ function mouseUp() {
 
 function checkSnap() {
     const cardRect = card.getBoundingClientRect();
-    const targetRect = Slot.getBoundingClientRect();
 
-    const distanceX = Math.abs(cardRect.left - targetRect.left);
-    const distanceY = Math.abs(cardRect.top - targetRect.top);
+    let closestSlot = null;
+    let minDistance = Infinity;
 
-    if (distanceX < snapThreshold && distanceY < snapThreshold) {
+    slots.forEach(slot => {
+        const slotRect = slot.getBoundingClientRect();
+        const distanceX = Math.abs(cardRect.left - slotRect.left);
+        const distanceY = Math.abs(cardRect.top - slotRect.top);
+        const totalDistance = distanceX + distanceY;
+
+        if (totalDistance < minDistance && totalDistance < snapThreshold) {
+            minDistance = totalDistance;
+            closestSlot = slot;
+        }
+    });
+
+    if (closestSlot) {
         card.style.transition = "top 0.3s ease-out, left 0.3s ease-out"; // Smooth transition
-        card.style.top = targetRect.top + 'px';
-        card.style.left = targetRect.left + 'px';
+        card.style.top = closestSlot.offsetTop + 'px';
+        card.style.left = closestSlot.offsetLeft + 'px';
 
         // Remove transition after animation completes to avoid affecting future dragging
         setTimeout(() => {
@@ -54,4 +65,3 @@ function checkSnap() {
         }, 300);
     }
 }
-
