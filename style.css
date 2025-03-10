@@ -1,0 +1,62 @@
+body{
+    padding: 0;
+    margin: 0;
+  }
+  
+  #container{
+    background-color:#212228;
+    background-image: linear-gradient(#292a30 .1em, transparent .1em), 
+    linear-gradient(90deg, #292a30 .1em, transparent .1em);
+    background-size: 4em 4em;
+    height: 100vh;
+  }
+  
+  
+  #card {
+    width: 100px;
+    height: 110px;
+    background-color: #AFDA9F;
+    border-radius: 2px;
+    cursor: grab;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+/* Create three vertically aligned dots */
+.drag-dots {
+    width: 6px;
+    height: 30px; /* Controls the total height of the dot group */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Evenly space the dots */
+    position: absolute;
+    left: 5px; /* Position closer to the left */
+    top: 50%;
+    transform: translateY(-50%); /* Center the dots vertically */
+}
+
+/* Create the individual dots */
+.drag-dots div {
+    width: 6px;
+    height: 6px;
+    background-color: #555; /* Adjust color for visibility */
+    border-radius: 50%;
+}
+
+
+  #Slot {
+    width: 100px;
+    height: 100px;
+    background-color: #555; /* Darker color for contrast */
+    border: 5px dashed #888; /* Dashed border to indicate a drop zone */
+    position: fixed;
+    top: 300px; /* Adjust as needed */
+    left: 300px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
