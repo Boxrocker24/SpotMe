@@ -1,62 +1,101 @@
-body{
+body {
     padding: 0;
     margin: 0;
-  }
-  
-  #container{
-    background-color:#212228;
-    background-image: linear-gradient(#292a30 .1em, transparent .1em), 
-    linear-gradient(90deg, #292a30 .1em, transparent .1em);
-    background-size: 4em 4em;
-    height: 100vh;
-  }
-  
-  
-  #card {
-    width: 100px;
-    height: 110px;
-    background-color: #AFDA9F;
-    border-radius: 2px;
+}
+
+#navbar {
+    width: 100%;
+    height: 50px;
+    background-color: #FFFFFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+#navbar h1 {
+    font-size: 24px;
+    color: black;
+}
+
+#container {
+    padding-top: 50px; /* Make space for the navbar */
+    height: calc(100vh - 50px); /* Remaining height after navbar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8F8F8;
+    position: relative; /* To control the slot positioning better */
+}
+
+/* Grid layout for slots */
+.slots-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, 1fr);   /* 2 rows */
+    gap: 20px; /* Gap between slots */
+    width: 100%; /* Make it responsive */
+    height: 90%;
+    position: relative;
+
+    margin: 0 auto; /* Ensure horizontal centering */
+    justify-items: center; /* Center items inside the grid */
+}
+
+
+/* Slot Style */
+.slot {
+    border-radius: 15px;
+    background-color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Take full width of grid cell */
+    height: 100%; /* Take full height of grid cell */
+}
+
+/* Card Style */
+#card {
+    width: 560px;
+    height: 360px;
+    background-color: #EDEDED;
+    border-radius: 15px;
     cursor: grab;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding-left: 10px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 10, 0.1);
 }
 
-/* Create three vertically aligned dots */
+/* Dots on the left of the card */
 .drag-dots {
     width: 6px;
-    height: 30px; /* Controls the total height of the dot group */
+    height: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Evenly space the dots */
+    justify-content: space-between;
     position: absolute;
-    left: 5px; /* Position closer to the left */
+    left: 5px;
     top: 50%;
-    transform: translateY(-50%); /* Center the dots vertically */
+    transform: translateY(-50%);
 }
 
-/* Create the individual dots */
 .drag-dots div {
     width: 6px;
     height: 6px;
-    background-color: #555; /* Adjust color for visibility */
+    background-color: #555;
     border-radius: 50%;
 }
 
-
-  #Slot {
-    width: 100px;
-    height: 100px;
-    background-color: #555; /* Darker color for contrast */
-    border: 5px dashed #888; /* Dashed border to indicate a drop zone */
-    position: fixed;
-    top: 300px; /* Adjust as needed */
-    left: 300px; /* Adjust as needed */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card, .slot {
+    width: 570px;  /* Adjust as needed */
+    height: 360px; /* Adjust as needed */
+    border-radius: 15px;
 }
-  
